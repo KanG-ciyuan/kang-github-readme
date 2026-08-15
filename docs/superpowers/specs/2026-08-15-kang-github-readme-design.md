@@ -46,6 +46,15 @@ Routing precedence:
 
 Read the repository structure, existing README, license, package metadata, executable commands, tests, deployment configuration, releases, and available visual assets. Do not infer product capabilities from the repository name alone.
 
+Inspection is staged rather than exhaustive:
+
+1. read the repository root, existing README, license, primary manifests, and entry documentation;
+2. locate tests, run commands, deployment configuration, and visual assets based on the apparent project type;
+3. read deeper only to support a concrete README claim or resolve a conflict;
+4. stop and report the evidence gap when the required confidence cannot be reached without a broad repository scan.
+
+Do not recursively read every file in a large repository by default. The Skill uses the narrowest evidence set that can support the requested documentation scope and asks the user when further inspection would materially increase time or context cost.
+
 ### 2. Build A Fact Ledger
 
 Classify candidate README claims as:
@@ -61,6 +70,13 @@ Public README content must answer reader questions. The author's local installat
 
 Determine the repository category, target reader, expected technical depth, primary user action, language, and strongest available evidence. Ask the user when classification would materially change the README and the repository does not provide enough evidence.
 
+Determine repository visibility separately:
+
+- Public repositories optimize for first-time external readers, installation, adoption, contribution, and verifiable public evidence.
+- Private or internal repositories optimize for authorized team members, operational context, onboarding, ownership, internal setup, and support paths.
+- Private mode does not relax secret handling. Credentials, private keys, raw `.env` content, and unnecessary personal data remain excluded.
+- If visibility cannot be verified and would change the content materially, ask the user.
+
 Language rules:
 
 - Chinese-oriented personal or domestic projects default to Chinese-first.
@@ -74,12 +90,15 @@ Before editing, show:
 
 - proposed README information architecture;
 - first-screen title, value proposition, and key introduction;
-- a `preserve / rewrite / add / remove` decision list;
+- a numbered `preserve / rewrite / add / remove` decision list;
+- a section-level diff-like summary showing the relevant old and proposed new content;
 - recommended screenshots, demos, command output, diagrams, examples, and badges;
 - proposed GitHub Description, Topics, and homepage link changes when relevant;
 - facts or assets that still require user confirmation.
 
 The preview must be representative text, not only section names.
+
+Each proposed change receives a stable identifier such as `R1`, `A2`, or `D1`. The user may accept, revise, defer, or reject each item. Unresolved items remain out of the edit scope; acceptance of one item does not imply acceptance of the full proposal.
 
 ### 5. Confirm Separate Scopes
 
@@ -92,11 +111,17 @@ Obtain separate approval for:
 
 Approval for one scope must not be treated as approval for the others.
 
-### 6. Edit And Verify
+### 6. Lock The Edit Scope
 
-After approval, make the smallest coherent edit. Verify Markdown structure, links, commands, image paths, badges, public claims, secret exposure, readability, and repository consistency. For visual repositories, inspect the real rendered result when a suitable browser path exists.
+Convert approved preview items into an explicit scope lock before editing. A request such as “only improve the introduction” authorizes only the named introduction section and directly necessary link or heading repairs within that section. The Skill may inspect surrounding content for consistency, but it must not modify unapproved sections.
 
-### 7. Publish Only When Requested
+When a requested local change creates a contradiction elsewhere, report the conflict and propose a separate change item. Do not silently expand the edit scope.
+
+### 7. Edit And Verify
+
+After approval, make the smallest coherent edit within the scope lock. Verify Markdown structure, local links, commands, image paths, badges, public claims, secret exposure, readability, and repository consistency. Compare versioned instructions and declared requirements against current authoritative manifests or configuration, and flag stale documentation instead of silently preserving it. Check external links when the network path is available and classify them as verified, redirected, broken, or unverified rather than claiming universal link validation. For visual repositories, inspect the real rendered result when a suitable browser path exists.
+
+### 8. Publish Only When Requested
 
 GitHub publication is optional. When explicitly requested, use a feature branch and Pull Request workflow. Do not push directly to the default branch. Publication failures must leave a valid local deliverable and be reported as incomplete external state.
 
@@ -116,6 +141,36 @@ The Skill must not impose a universal section list. It selects from project-appr
 | Research project | Data, method, reproducibility evidence | Question, method, data, reproduce, limitations, citation |
 
 The first screen should normally contain a literal project name, a reader-centered value statement, useful status badges, one quick-start path, and a concrete preview when the project is visual. These are defaults, not mandatory decorations.
+
+## Minimal Interaction Example
+
+This example demonstrates the preview contract; it is not a fixed README template.
+
+```text
+User:
+Only improve the introduction of this CLI repository. Do not change the rest.
+
+Skill preview:
+Project type: CLI tool
+Audience: external developers
+Scope lock: README introduction only
+
+P1 Preserve — project name and existing installation link
+R1 Rewrite — current introduction is implementation-first
+  Before: "This repository uses Python to process files."
+  Proposed: "Batch-normalize project files from one command, with a dry-run preview before any write."
+A1 Add — one verified command example below the introduction
+D1 Remove — none
+
+Outside scope:
+- installation section
+- options reference
+- contribution guide
+
+Approve R1 and A1, revise them, or reject either item.
+```
+
+If the user approves only `R1`, the Skill edits only the introduction text. `A1` and all outside-scope sections remain unchanged.
 
 ## Visual Evidence Rules
 
@@ -176,12 +231,17 @@ kang-github-readme/
 | Condition | Required behavior |
 |---|---|
 | Project type is ambiguous | Ask the user before choosing a materially different structure |
+| Repository visibility is unclear | Ask whether the README serves public readers or an authorized internal team |
+| Repository is large | Use staged inspection, expand only for specific claims, and ask before a broad scan |
 | Run or test evidence is absent | Mark it `to verify`; do not invent commands or success claims |
 | External references are unavailable | Continue from repository facts and disclose the evidence gap |
 | Existing README contains useful content | Preserve it selectively instead of replacing the whole file |
 | README conflicts with code or configuration | Show the conflict and favor currently verifiable repository facts |
+| Versioned instructions appear stale | Flag the affected section and propose a separately approved correction |
+| A local edit conflicts with another section | Propose a separate numbered change; do not expand the scope lock silently |
 | Secret or private data is detected | Report location and risk without displaying the value |
 | Images or links are missing | Include them in the preview gap list; do not fabricate replacements |
+| External link checking is unavailable | Validate local links and mark external links as unverified |
 | GitHub authentication or permission fails | Stop at the local deliverable and report publication as incomplete |
 
 ## Evaluation Strategy
@@ -196,15 +256,21 @@ Evaluate representative repositories for:
 
 - preview-before-edit compliance;
 - correct project classification;
+- correct public-versus-private audience handling;
+- staged inspection for large repositories;
 - dynamic language and structure;
 - `preserve / rewrite / add / remove` reasoning;
+- numbered per-item approval and section-level diff-like previews;
+- scope-lock enforcement for section-only requests;
 - separation of verified, historical, and unverified claims;
 - project-appropriate visual evidence;
 - absence of owner-local state and private information;
 - separate authorization for README, assets, metadata, and publication;
+- local-link validation and honest external-link status;
+- detection of stale versioned instructions against repository manifests;
 - consistency between README and GitHub metadata proposals.
 
-The initial domain set includes a frontend product, CLI, library, API, Agent Skill, and sparse new repository.
+The initial domain set includes a frontend product, CLI, library, API, Agent Skill, sparse new repository, private internal repository, and large monorepo fixture.
 
 ### Package Validation
 
@@ -232,4 +298,7 @@ The implementation is ready for user review when:
 6. positive, negative, near-neighbor, and output cases pass;
 7. package and secret validation pass without warnings;
 8. the creation handoff distinguishes validated behavior, design advantages, hypotheses, and missing evidence;
-9. no local installation or GitHub publication occurs without a later explicit request.
+9. section-only requests do not modify unapproved sections, even when broader improvements are available;
+10. large repositories are inspected in bounded stages instead of recursively scanned by default;
+11. private repositories receive an internal-reader strategy without weakening secret controls;
+12. no local installation or GitHub publication occurs without a later explicit request.
