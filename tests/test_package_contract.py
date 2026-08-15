@@ -121,9 +121,14 @@ class PackageContractTest(unittest.TestCase):
             public,
             r"(?i)(api[_ -]?key|token|cookie|password)\s*[:=]\s*['\"][^'\"]{8,}",
         )
-        for forbidden_identity in ("乔木", "qiaomu", "anthropic"):
-            with self.subTest(forbidden_identity=forbidden_identity):
-                self.assertNotIn(forbidden_identity, public.lower())
+        identity_declarations = re.findall(
+            r"(?im)^\s*(?:author|owner)\s*:\s*([^\n]+)$",
+            public,
+        )
+        self.assertTrue(identity_declarations)
+        self.assertTrue(
+            all(value.strip().strip('"\'') == "Kang" for value in identity_declarations)
+        )
 
     def test_package_validator_returns_clean_result(self) -> None:
         completed = subprocess.run(

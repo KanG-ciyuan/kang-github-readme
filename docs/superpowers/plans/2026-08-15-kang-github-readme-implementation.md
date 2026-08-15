@@ -42,7 +42,7 @@
 
 - [ ] **Step 1: Run read-only catalog research**
 
-Run from `/Users/kang/.codex/skills/qiaomu-meta-skill`:
+Run from the approved trusted local research package:
 
 ```bash
 python3 scripts/research_prior_art.py \

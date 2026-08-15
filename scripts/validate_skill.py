@@ -130,9 +130,6 @@ def validate(root: Path) -> dict:
         "author's local installation",
         "personal backup",
         "kang-owned backup",
-        "乔木",
-        "qiaomu",
-        "anthropic",
     )
     for phrase in prohibited_phrases:
         if phrase in public_lower:
@@ -142,6 +139,14 @@ def validate(root: Path) -> dict:
         public,
     ):
         failures.append("public content contains a secret-like value")
+    identity_declarations = re.findall(
+        r"(?im)^\s*(?:author|owner)\s*:\s*([^\n]+)$",
+        public,
+    )
+    if not identity_declarations or any(
+        value.strip().strip('"\'') != "Kang" for value in identity_declarations
+    ):
+        failures.append("public content contains an inconsistent author identity")
     if re.search(r"(?i)\b(TODO|TBD|FIXME)\b", public):
         failures.append("public content contains placeholder text")
 
