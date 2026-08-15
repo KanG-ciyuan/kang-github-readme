@@ -1,0 +1,172 @@
+{
+  "cases": [
+    {
+      "id": "cn_create_public_readme",
+      "text": "帮我给这个 GitHub 项目写一个完整 README，先给预览",
+      "expected": true,
+      "family": "create"
+    },
+    {
+      "id": "en_create_repository_readme",
+      "text": "Create a README for this repository and show me the proposed structure first",
+      "expected": true,
+      "family": "create"
+    },
+    {
+      "id": "cn_section_only",
+      "text": "只优化这个仓库 README 的简介，其他章节不要动",
+      "expected": true,
+      "family": "incremental"
+    },
+    {
+      "id": "en_section_only",
+      "text": "Rewrite only the installation section in this repo README",
+      "expected": true,
+      "family": "incremental"
+    },
+    {
+      "id": "cn_audit_readme",
+      "text": "审计这个 README 里的命令、链接和功能声明，先不要修改",
+      "expected": true,
+      "family": "audit"
+    },
+    {
+      "id": "en_audit_readme",
+      "text": "Audit the repository README for stale links and unsupported claims",
+      "expected": true,
+      "family": "audit"
+    },
+    {
+      "id": "cn_private_repo",
+      "text": "为这个私有仓库整理一份面向内部开发者的 README",
+      "expected": true,
+      "family": "private_repository"
+    },
+    {
+      "id": "en_private_repo",
+      "text": "Improve the private repository README for our internal engineering team",
+      "expected": true,
+      "family": "private_repository"
+    },
+    {
+      "id": "cn_github_metadata",
+      "text": "检查仓库 README、GitHub Description 和 Topics 是否一致",
+      "expected": true,
+      "family": "metadata"
+    },
+    {
+      "id": "en_github_metadata",
+      "text": "Review this repository's README, GitHub description, topics, and homepage",
+      "expected": true,
+      "family": "metadata"
+    },
+    {
+      "id": "cn_screenshots",
+      "text": "给项目 README 规划真实运行截图和演示素材的位置",
+      "expected": true,
+      "family": "visual_evidence"
+    },
+    {
+      "id": "en_installation_guidance",
+      "text": "Improve the installation guidance in the GitHub project README",
+      "expected": true,
+      "family": "installation"
+    },
+    {
+      "id": "cn_plain_markdown",
+      "text": "把这份会议记录整理成 Markdown",
+      "expected": false,
+      "family": "ordinary_markdown"
+    },
+    {
+      "id": "en_plain_markdown",
+      "text": "Convert these meeting notes to Markdown",
+      "expected": false,
+      "family": "ordinary_markdown"
+    },
+    {
+      "id": "cn_advertising_copy",
+      "text": "帮我写一段小红书产品推广文案",
+      "expected": false,
+      "family": "copywriting"
+    },
+    {
+      "id": "en_landing_copy",
+      "text": "Write conversion copy for our marketing landing page",
+      "expected": false,
+      "family": "copywriting"
+    },
+    {
+      "id": "cn_markdown_syntax",
+      "text": "Markdown 表格怎么合并单元格？",
+      "expected": false,
+      "family": "syntax"
+    },
+    {
+      "id": "en_markdown_syntax",
+      "text": "How do I make a nested list in Markdown?",
+      "expected": false,
+      "family": "syntax"
+    },
+    {
+      "id": "cn_code_fix",
+      "text": "修复这个 React 项目的登录按钮点击无响应问题",
+      "expected": false,
+      "family": "code_fix"
+    },
+    {
+      "id": "en_code_fix",
+      "text": "Fix the failing unit tests in this GitHub repository",
+      "expected": false,
+      "family": "code_fix"
+    },
+    {
+      "id": "cn_deployment_debug",
+      "text": "排查这个项目部署到 Cloudflare 后出现 502 的原因",
+      "expected": false,
+      "family": "deployment"
+    },
+    {
+      "id": "en_deployment_debug",
+      "text": "Debug why the repository deployment fails in GitHub Actions",
+      "expected": false,
+      "family": "deployment"
+    },
+    {
+      "id": "cn_end_to_end_skill",
+      "text": "把这套流程创建、测试并发布成一个完整 Skill",
+      "expected": false,
+      "family": "meta_skill"
+    },
+    {
+      "id": "en_end_to_end_skill",
+      "text": "Create, evaluate, package, and publish a complete Agent Skill",
+      "expected": false,
+      "family": "meta_skill"
+    },
+    {
+      "id": "cn_skill_readme_only",
+      "text": "只改这个 Agent Skill 仓库的 README，自身能力不要动",
+      "expected": true,
+      "family": "skill_readme"
+    },
+    {
+      "id": "en_skill_readme_only",
+      "text": "Audit only the README of this Skill repository, not the Skill implementation",
+      "expected": true,
+      "family": "skill_readme"
+    },
+    {
+      "id": "cn_generic_docs",
+      "text": "给项目写一份内部 API 设计文档",
+      "expected": false,
+      "family": "other_docs"
+    },
+    {
+      "id": "en_release_notes",
+      "text": "Draft release notes for version 2.0",
+      "expected": false,
+      "family": "other_docs"
+    }
+  ]
+}
