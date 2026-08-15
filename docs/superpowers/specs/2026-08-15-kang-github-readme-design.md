@@ -207,9 +207,15 @@ kang-github-readme/
 ├── evals/
 │   ├── trigger-cases.json
 │   └── output-cases.json
+├── scripts/
+│   ├── validate_skill.py
+│   ├── trigger_eval.py
+│   └── output_eval.py
 ├── reports/
 │   ├── prior-art-research.md
 │   ├── trigger-eval.json
+│   ├── output-eval.json
+│   ├── skill-ir.json
 │   └── creation-handoff.md
 └── tests/
 ```
