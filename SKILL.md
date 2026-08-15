@@ -15,7 +15,7 @@ Create or selectively improve repository-specific GitHub README content and rela
 
 ## Routing Boundary
 
-Use this Skill for README-only and repository-presentation work. Do not take over ordinary Markdown editing, product implementation, deployment debugging, advertising copy, or end-to-end Skill engineering.
+Use this Skill for README-only and repository-presentation work, including an Agent Skill repository when the requested scope is only its README. Do not take over ordinary Markdown editing, product implementation, deployment debugging, advertising copy, or end-to-end Skill engineering. Route complete Skill research, creation, evaluation, packaging, installation, governance, or publication to the applicable Meta Skill.
 
 ## Default Workflow
 
