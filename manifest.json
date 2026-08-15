@@ -1,0 +1,13 @@
+{
+  "name": "kang-github-readme",
+  "version": "0.1.0",
+  "owner": "Kang",
+  "maturity": "production",
+  "review_cadence": "manual",
+  "installation": {
+    "status": "not_requested"
+  },
+  "publication": {
+    "status": "not_requested"
+  }
+}
