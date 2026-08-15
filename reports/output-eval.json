@@ -1,0 +1,66 @@
+{
+  "evidence_type": "recorded_fixture",
+  "provider_backed": false,
+  "human_reviewed": false,
+  "total": 8,
+  "passed": 8,
+  "failed": 0,
+  "results": [
+    {
+      "id": "frontend_product_preview",
+      "passed": true,
+      "missing_required": [],
+      "present_forbidden": [],
+      "evidence_type": "recorded_fixture"
+    },
+    {
+      "id": "cli_section_scope_lock",
+      "passed": true,
+      "missing_required": [],
+      "present_forbidden": [],
+      "evidence_type": "recorded_fixture"
+    },
+    {
+      "id": "library_dynamic_modules",
+      "passed": true,
+      "missing_required": [],
+      "present_forbidden": [],
+      "evidence_type": "recorded_fixture"
+    },
+    {
+      "id": "api_evidence_boundary",
+      "passed": true,
+      "missing_required": [],
+      "present_forbidden": [],
+      "evidence_type": "recorded_fixture"
+    },
+    {
+      "id": "agent_skill_public_boundary",
+      "passed": true,
+      "missing_required": [],
+      "present_forbidden": [],
+      "evidence_type": "recorded_fixture"
+    },
+    {
+      "id": "sparse_repository_degradation",
+      "passed": true,
+      "missing_required": [],
+      "present_forbidden": [],
+      "evidence_type": "recorded_fixture"
+    },
+    {
+      "id": "private_internal_repository",
+      "passed": true,
+      "missing_required": [],
+      "present_forbidden": [],
+      "evidence_type": "recorded_fixture"
+    },
+    {
+      "id": "large_monorepo_staged_inspection",
+      "passed": true,
+      "missing_required": [],
+      "present_forbidden": [],
+      "evidence_type": "recorded_fixture"
+    }
+  ]
+}

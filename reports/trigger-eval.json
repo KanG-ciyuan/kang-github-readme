@@ -1,0 +1,204 @@
+{
+  "total": 28,
+  "passed": 28,
+  "false_positive": 0,
+  "false_negative": 0,
+  "results": [
+    {
+      "id": "cn_create_public_readme",
+      "family": "create",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "id": "en_create_repository_readme",
+      "family": "create",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "id": "cn_section_only",
+      "family": "incremental",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "id": "en_section_only",
+      "family": "incremental",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "id": "cn_audit_readme",
+      "family": "audit",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "id": "en_audit_readme",
+      "family": "audit",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "id": "cn_private_repo",
+      "family": "private_repository",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "id": "en_private_repo",
+      "family": "private_repository",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "id": "cn_github_metadata",
+      "family": "metadata",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "id": "en_github_metadata",
+      "family": "metadata",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "id": "cn_screenshots",
+      "family": "visual_evidence",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "id": "en_installation_guidance",
+      "family": "installation",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "id": "cn_plain_markdown",
+      "family": "ordinary_markdown",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "id": "en_plain_markdown",
+      "family": "ordinary_markdown",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "id": "cn_advertising_copy",
+      "family": "copywriting",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "id": "en_landing_copy",
+      "family": "copywriting",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "id": "cn_markdown_syntax",
+      "family": "syntax",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "id": "en_markdown_syntax",
+      "family": "syntax",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "id": "cn_code_fix",
+      "family": "code_fix",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "id": "en_code_fix",
+      "family": "code_fix",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "id": "cn_deployment_debug",
+      "family": "deployment",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "id": "en_deployment_debug",
+      "family": "deployment",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "id": "cn_end_to_end_skill",
+      "family": "meta_skill",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "id": "en_end_to_end_skill",
+      "family": "meta_skill",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "id": "cn_skill_readme_only",
+      "family": "skill_readme",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "id": "en_skill_readme_only",
+      "family": "skill_readme",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "id": "cn_generic_docs",
+      "family": "other_docs",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "id": "en_release_notes",
+      "family": "other_docs",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+interface:
+  display_name: "Kang GitHub README"
+  short_description: "Preview, audit, and selectively improve repository-specific GitHub README content"
+  default_prompt: "Use $kang-github-readme to inspect this repository, classify its project type, audience, visibility, language, and evidence, then show a representative numbered README preview before editing. Lock the approved scope and keep README edits, visual assets, GitHub metadata, and publication as separate permissions."
+  examples:
+    - "先读这个仓库，给我一份 README 结构和首屏文案预览"
+    - "只优化 README 简介，其他章节不要动"
+    - "审计 README 里的命令、链接和能力声明，先不修改"
+    - "分开检查 README 和 GitHub Description、Topics，先只给建议"
+compatibility:
+  canonical_format: "agent-skills"
+  activation: "manual"
+  permissions:
+    file_write: "README-related files only after approval"
+    assets: "separate approval"
+    github_metadata: "separate approval"
+    publication: "separate approval"
