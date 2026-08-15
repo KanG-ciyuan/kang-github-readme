@@ -85,11 +85,13 @@ def validate(root: Path) -> dict:
 
     if manifest.get("name") != "kang-github-readme" or manifest.get("owner") != "Kang":
         failures.append("manifest identity is inconsistent")
+    if manifest.get("version") != "0.1.1" or 'version: "0.1.1"' not in skill:
+        failures.append("package version is inconsistent")
     if manifest.get("maturity") != "production":
         failures.append("manifest maturity must be production")
-    if manifest.get("installation", {}).get("status") != "not_requested":
+    if manifest.get("installation", {}).get("status") != "verified":
         failures.append("manifest installation status is inconsistent")
-    if manifest.get("publication", {}).get("status") != "not_requested":
+    if manifest.get("publication", {}).get("status") != "verified":
         failures.append("manifest publication status is inconsistent")
     if "Kang GitHub README" not in interface or "Kang GitHub README" not in readme:
         failures.append("public package identity is inconsistent")
@@ -112,8 +114,8 @@ def validate(root: Path) -> dict:
             failures.append(f"README missing section: {heading}")
     if len(re.findall(r'^- [“\"]', readme, flags=re.MULTILINE)) < 4:
         failures.append("README needs at least four natural-language examples")
-    if "not yet verified" not in readme:
-        failures.append("README must disclose unverified installation and discovery")
+    if "Codex 安装已验证" not in readme or "npx 安装尚未验证" not in readme:
+        failures.append("README must distinguish verified Codex install from unverified npx install")
 
     public_paths = [
         root / "SKILL.md",

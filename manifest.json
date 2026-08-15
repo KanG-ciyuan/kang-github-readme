@@ -1,13 +1,19 @@
 {
   "name": "kang-github-readme",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "owner": "Kang",
   "maturity": "production",
   "review_cadence": "manual",
   "installation": {
-    "status": "not_requested"
+    "status": "verified",
+    "method": "codex-skill-installer",
+    "source": "https://github.com/KanG-ciyuan/kang-github-readme",
+    "verified_on": "2026-08-15"
   },
   "publication": {
-    "status": "not_requested"
+    "status": "verified",
+    "repository": "https://github.com/KanG-ciyuan/kang-github-readme",
+    "pull_request": "https://github.com/KanG-ciyuan/kang-github-readme/pull/1",
+    "verified_on": "2026-08-15"
   }
 }
