@@ -2,6 +2,10 @@
 
 > 先读懂仓库，再把 README 写成符合项目、证据和读者的公开介绍。
 
+[![Release](https://img.shields.io/github/v/release/KanG-ciyuan/kang-github-readme?style=flat-square&label=release)](https://github.com/KanG-ciyuan/kang-github-readme/releases/latest)
+[![License](https://img.shields.io/github/license/KanG-ciyuan/kang-github-readme?style=flat-square)](LICENSE)
+[![Last commit](https://img.shields.io/github/last-commit/KanG-ciyuan/kang-github-readme?style=flat-square)](https://github.com/KanG-ciyuan/kang-github-readme/commits/main)
+
 `kang-github-readme` 是由 **Kang** 创建并维护的 GitHub README 设计与审核 Skill。它既适合新仓库首次编写，也适合已有 README 的局部优化、事实审计和仓库展示一致性检查。
 
 ## 为什么需要它
