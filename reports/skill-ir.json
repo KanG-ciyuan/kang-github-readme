@@ -2,7 +2,7 @@
   "identity": {
     "name": "kang-github-readme",
     "owner": "Kang",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "maturity": "production"
   },
   "intent": "Create, audit, restructure, or selectively improve repository-specific GitHub README presentation with preview-first approval and verified public claims.",
@@ -43,13 +43,14 @@
     "Codex-compatible Agent Skills"
   ],
   "current_state": {
-    "installation": "not_requested",
-    "publication": "not_requested"
+    "installation": "verified_codex_global",
+    "publication": "verified_github_main"
   },
   "missing_evidence": [
     "external public Skill catalog comparison",
     "provider-backed end-to-end evaluation",
     "human comparative review",
-    "public GitHub discovery and installation verification"
+    "npx discovery and installation verification",
+    "GitHub Release verification"
   ]
 }

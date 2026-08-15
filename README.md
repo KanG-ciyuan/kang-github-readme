@@ -59,7 +59,9 @@
 - 公开仓库中的命令、版本、链接和能力声明应有当前证据支持。
 - 私有仓库仍不得暴露密钥值、认证文件或不必要的个人信息。
 
-安装与 GitHub 公开发现状态目前为 **not yet verified**。本仓库完成的是本地 Production 包验证，不把尚未执行的安装或发布写成既成事实。
+公开源码：[KanG-ciyuan/kang-github-readme](https://github.com/KanG-ciyuan/kang-github-readme)
+
+**Codex 安装已验证**：已从公开仓库 `main` 分支安装到 Codex 全局 Skill 目录，并通过包校验。`npx 安装尚未验证`，因此本仓库不把 `npx` 发现或安装写成已验证能力。
 
 ## 本地验证
 
@@ -78,12 +80,15 @@ python3 scripts/validate_skill.py .
 - 28 个确定性触发案例；
 - 8 个 `recorded_fixture` 输出契约案例；
 - 预览优先、范围锁定、私有仓库策略和分阶段检查规则。
+- GitHub 公开仓库与 Pull Request 发布路径；
+- 从公开仓库安装到 Codex 的全局安装路径。
 
 当前未验证：
 
 - 真实模型提供方的端到端调用表现；
 - 人工盲评或用户偏好胜率；
-- GitHub 公开发现和安装流程；
+- `npx` 发现与安装流程；
+- GitHub Release；
 - 相对其他公开 README Skill 的全面优势。
 
 保存样例通过只证明规则结构符合预期，不等于真实模型质量或普遍审美提升。

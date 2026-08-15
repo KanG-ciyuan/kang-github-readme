@@ -4,7 +4,7 @@ description: |
   Use when creating, auditing, restructuring, or selectively improving a GitHub repository README or public repository presentation, including Description, Topics, homepage metadata, project-specific evidence, screenshots, installation guidance, or a preview-before-edit request. Exclude ordinary Markdown editing, advertising copy, code or deployment fixes, syntax-only questions, and end-to-end Skill engineering owned by a Meta Skill.
 metadata:
   author: Kang
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 # Kang GitHub README
