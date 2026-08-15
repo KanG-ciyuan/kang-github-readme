@@ -1,0 +1,146 @@
+{
+  "evidence_type": "recorded_fixture",
+  "cases": [
+    {
+      "id": "frontend_product_preview",
+      "prompt": "为这个前端产品仓库重写 README，先给我看效果。",
+      "project_context": "Public React product with verified local run commands and two real screenshots.",
+      "recorded_output": "Classification: frontend product; audience: evaluators and contributors; visibility: public; language: Chinese-first. Evidence ledger: verified local start command and two real screenshots; to verify production URL. Scope lock: preview only. R1 Rewrite the opening around the product outcome and a real interface screenshot. A1 Add a concise workflow section after the opening. Representative preview: product name, one-sentence outcome, real screenshot, primary run command. Outside scope: GitHub metadata and publication require separate approval.",
+      "required": [
+        "Classification: frontend product",
+        "Evidence ledger",
+        "R1 Rewrite",
+        "Representative preview",
+        "separate approval"
+      ],
+      "forbidden": [
+        "deployed successfully",
+        "generated product screenshot"
+      ],
+      "evidence_type": "recorded_fixture"
+    },
+    {
+      "id": "cli_section_scope_lock",
+      "prompt": "只优化 CLI 仓库 README 的简介，安装部分不要动。",
+      "project_context": "Public CLI with an existing README and tested install command.",
+      "recorded_output": "Classification: CLI tool; audience: command-line users; visibility: public. Scope lock: README introduction only. R1 Rewrite the introduction to state the command-line problem, supported input, and verified output. Before: a generic one-line description. Proposed: a concise outcome-led introduction based on repository evidence. Outside scope: installation section remains unchanged. Conflict note: installation wording appears stale, but it is recorded as a separate unapproved proposal.",
+      "required": [
+        "Scope lock: README introduction only",
+        "R1 Rewrite",
+        "Outside scope",
+        "installation section"
+      ],
+      "forbidden": [
+        "I updated the installation section",
+        "all sections were improved"
+      ],
+      "evidence_type": "recorded_fixture"
+    },
+    {
+      "id": "library_dynamic_modules",
+      "prompt": "给这个开源库设计 README，不要套通用模板。",
+      "project_context": "Typed library with package metadata, examples, tests, and compatibility declarations.",
+      "recorded_output": "Classification: software library; audience: adopting developers; visibility: public. Evidence ledger: verified package name, API example, test command, and compatibility declaration. A1 Add a minimal working example before the full API reference. A2 Add compatibility and version policy because adoption depends on them. Deliberate omission: no roadmap or contributor gallery without repository evidence. Representative preview: value statement, install command, minimal API example, compatibility note.",
+      "required": [
+        "Classification: software library",
+        "minimal working example",
+        "compatibility",
+        "Deliberate omission"
+      ],
+      "forbidden": [
+        "one universal template",
+        "industry-leading"
+      ],
+      "evidence_type": "recorded_fixture"
+    },
+    {
+      "id": "api_evidence_boundary",
+      "prompt": "审计并改进这个 API 项目的 README。",
+      "project_context": "API service with an OpenAPI file, local examples, environment-variable names, and no verified public endpoint.",
+      "recorded_output": "Classification: API service; audience: integrators; visibility: public. Evidence ledger: verified OpenAPI routes and local request example; to verify hosted endpoint and rate limits; do not publish credential values. R1 Rewrite authentication guidance using variable names only. A1 Add one verified local request and response example. Link status: local specification verified; external endpoint unverified. Scope lock: README content only; deployment and GitHub metadata are outside scope.",
+      "required": [
+        "Classification: API service",
+        "to verify hosted endpoint",
+        "do not publish credential values",
+        "external endpoint unverified"
+      ],
+      "forbidden": [
+        "live production API",
+        "secret value"
+      ],
+      "evidence_type": "recorded_fixture"
+    },
+    {
+      "id": "agent_skill_public_boundary",
+      "prompt": "为这个公开的 Agent Skill 仓库写 README。",
+      "project_context": "Agent Skill package with deterministic local tests but no provider-backed or human-reviewed evaluation.",
+      "recorded_output": "Classification: Agent Skill; audience: users and reviewers; visibility: public. Evidence ledger: verified package structure and deterministic local tests; missing evidence: provider-backed evaluation and human review. R1 Rewrite the opening around trigger situations and responsibility boundaries. A1 Add natural-language invocation examples. A2 Add exclusions, permission scopes, and honest evaluation labels. Representative preview: purpose, when to invoke, one example, output contract, evidence status. Publication remains a separate unapproved action.",
+      "required": [
+        "Classification: Agent Skill",
+        "provider-backed evaluation",
+        "human review",
+        "permission scopes",
+        "separate unapproved action"
+      ],
+      "forbidden": [
+        "not installed locally",
+        "/Users/",
+        "personal backup",
+        "proven production improvement"
+      ],
+      "evidence_type": "recorded_fixture"
+    },
+    {
+      "id": "sparse_repository_degradation",
+      "prompt": "这个仓库文件很少，也帮我写一个完整 README。",
+      "project_context": "Repository contains only a manifest and one source file; no tests, screenshots, or run evidence.",
+      "recorded_output": "Classification: insufficient evidence for a precise project type. Evidence ledger: verified manifest identity and source entrypoint; to verify setup, output, compatibility, and maturity. Missing evidence prevents a complete public README. Proposed smallest coherent draft: project identity, currently observable purpose, repository structure, and an explicit verification-needed section. No installation command, screenshot, production claim, or compatibility matrix will be invented.",
+      "required": [
+        "insufficient evidence",
+        "Missing evidence prevents a complete public README",
+        "smallest coherent draft",
+        "will be invented"
+      ],
+      "forbidden": [
+        "Production ready",
+        "npm install"
+      ],
+      "evidence_type": "recorded_fixture"
+    },
+    {
+      "id": "private_internal_repository",
+      "prompt": "优化这个私有仓库 README，主要给内部团队交接使用。",
+      "project_context": "Private internal service with operational runbooks and existing secret-handling controls.",
+      "recorded_output": "Classification: internal service; audience: internal engineering and operations; visibility: private. Scope lock: README preview only. R1 Rewrite the opening for ownership, service purpose, and escalation path. A1 Add verified setup, support, and recovery links that remain internal. Secret controls remain unchanged: refer only to approved variable names and credential storage locations without values. Public-repository marketing modules are omitted. External metadata changes require separate approval.",
+      "required": [
+        "audience: internal engineering and operations",
+        "visibility: private",
+        "Secret controls remain unchanged",
+        "without values"
+      ],
+      "forbidden": [
+        "publish internal runbook",
+        "credential value"
+      ],
+      "evidence_type": "recorded_fixture"
+    },
+    {
+      "id": "large_monorepo_staged_inspection",
+      "prompt": "给这个大型 monorepo 重新规划 README。",
+      "project_context": "Large monorepo with many packages, multiple READMEs, and incomplete ownership metadata.",
+      "recorded_output": "Classification: large monorepo; audience: adopters and contributors; visibility: public. Inspection mode: staged inspection. Stage 1 reads root manifests, root README, package index, ownership files, and build entrypoints. Stage 2 samples representative packages only after the root map is understood. Named evidence gap: package support status and ownership are incomplete. Proposed root README modules: repository map, supported entrypoints, verified setup path, package navigation, and contribution boundary. No full recursive scan or package-level rewrite is implied by this preview.",
+      "required": [
+        "Inspection mode: staged inspection",
+        "Stage 1",
+        "Stage 2",
+        "Named evidence gap",
+        "No full recursive scan"
+      ],
+      "forbidden": [
+        "scanned every file",
+        "all packages are supported"
+      ],
+      "evidence_type": "recorded_fixture"
+    }
+  ]
+}
