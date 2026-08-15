@@ -1,0 +1,55 @@
+{
+  "identity": {
+    "name": "kang-github-readme",
+    "owner": "Kang",
+    "version": "0.1.0",
+    "maturity": "production"
+  },
+  "intent": "Create, audit, restructure, or selectively improve repository-specific GitHub README presentation with preview-first approval and verified public claims.",
+  "inputs": [
+    "repository files and metadata",
+    "existing README content",
+    "user task and requested scope",
+    "available run, test, link, and visual evidence"
+  ],
+  "outputs": [
+    "project and audience classification",
+    "fact ledger",
+    "representative numbered preview",
+    "approved scope lock",
+    "README changes after approval",
+    "verification and unresolved evidence gaps"
+  ],
+  "exclusions": [
+    "ordinary Markdown editing",
+    "advertising copy",
+    "code or deployment fixes",
+    "syntax-only questions",
+    "end-to-end Skill engineering"
+  ],
+  "permissions": {
+    "readme_write": "separate approval",
+    "asset_change": "separate approval",
+    "github_metadata_write": "separate approval",
+    "publication": "separate approval"
+  },
+  "evidence_types": {
+    "trigger": "deterministic_case_fixture",
+    "output": "recorded_fixture",
+    "provider_backed": false,
+    "human_reviewed": false
+  },
+  "target_platforms": [
+    "Codex-compatible Agent Skills"
+  ],
+  "current_state": {
+    "installation": "not_requested",
+    "publication": "not_requested"
+  },
+  "missing_evidence": [
+    "external public Skill catalog comparison",
+    "provider-backed end-to-end evaluation",
+    "human comparative review",
+    "public GitHub discovery and installation verification"
+  ]
+}
