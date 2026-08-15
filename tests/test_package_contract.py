@@ -43,12 +43,23 @@ class PackageContractTest(unittest.TestCase):
             with self.subTest(forbidden=forbidden):
                 self.assertNotIn(forbidden, public)
 
-    def test_manifest_declares_production_without_install_claim(self) -> None:
+    def test_manifest_declares_verified_public_install(self) -> None:
         manifest = json.loads((ROOT / "manifest.json").read_text(encoding="utf-8"))
         self.assertEqual(manifest["name"], "kang-github-readme")
         self.assertEqual(manifest["owner"], "Kang")
+        self.assertEqual(manifest["version"], "0.1.1")
         self.assertEqual(manifest["maturity"], "production")
-        self.assertEqual(manifest["installation"]["status"], "not_requested")
+        self.assertEqual(manifest["installation"]["status"], "verified")
+        self.assertEqual(manifest["publication"]["status"], "verified")
+
+    def test_readme_records_verified_public_state(self) -> None:
+        text = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn(
+            "https://github.com/KanG-ciyuan/kang-github-readme",
+            text,
+        )
+        self.assertIn("Codex 安装已验证", text)
+        self.assertIn("npx 安装尚未验证", text)
 
     def test_only_one_discoverable_skill_entrypoint_exists(self) -> None:
         entries = sorted(ROOT.rglob("SKILL.md"))

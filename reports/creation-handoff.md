@@ -4,10 +4,10 @@
 
 - Name: `kang-github-readme`
 - Owner: Kang
-- Version: `0.1.0`
+- Version: `0.1.1`
 - Maturity: Production package contract
-- Installation: not requested
-- Publication: not requested
+- Installation: verified through the Codex Skill installer from public `main`
+- Publication: verified through GitHub Pull Request #1
 
 ## Reference Skills Studied
 
@@ -46,6 +46,7 @@ No external candidate Skill source was inspected in this run because the public 
 - All 8 recorded output fixtures satisfy their required and forbidden assertions.
 - The output report explicitly identifies itself as `recorded_fixture`, not provider-backed or human-reviewed evidence.
 - Public documentation checks exclude private absolute paths, owner-local state, secret-like values, and other-person identity.
+- The public repository and Codex global installation were verified on 2026-08-15.
 
 ## Design Advantages
 
@@ -67,4 +68,5 @@ These are hypotheses until provider-backed tasks and human comparative review ar
 - No external public Skill candidate comparison was completed.
 - No live model provider evaluation was run.
 - No human blind review or preference study was run.
-- No GitHub publication, public discovery, or installation verification was performed.
+- No `npx` discovery or installation verification was performed.
+- No GitHub Release was created.
