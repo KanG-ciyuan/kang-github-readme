@@ -52,14 +52,60 @@ class PackageContractTest(unittest.TestCase):
         self.assertEqual(manifest["installation"]["status"], "verified")
         self.assertEqual(manifest["publication"]["status"], "verified")
 
-    def test_readme_records_verified_public_state(self) -> None:
-        text = (ROOT / "README.md").read_text(encoding="utf-8")
+    def test_manifest_install_status_has_no_honest_value_yet(self) -> None:
+        """H-9: the manifest cannot currently state the truth.
+
+        `installation.status` carries no schema and no defined enum. The only
+        value `validate_skill.py` accepts is `verified`, so the manifest cannot be
+        downgraded to an honest "not yet verified" state without inventing an enum
+        value and rewriting the validator's check — both out of scope.
+
+        This test pins the gap rather than hiding it. It fails in two directions:
+
+        * if evidence appears, the README's `to verify` label becomes stale;
+        * if the manifest changes to a value that is not `verified`, the validator
+          contract and this test must be revisited deliberately.
+
+        Resolution requires the owner to define a `to_verify`-equivalent state in
+        the manifest schema (`MANIFEST_SCHEMA_DECISION_REQUIRED`).
+        """
+        manifest = json.loads((ROOT / "manifest.json").read_text(encoding="utf-8"))
+
+        # The schema gap is real: no schema file, and no other value is accepted.
+        schemas = sorted(ROOT.rglob("*.schema.json"))
+        self.assertEqual(schemas, [], "a manifest schema appeared; revisit H-9")
+
+        validator = (ROOT / "scripts/validate_skill.py").read_text(encoding="utf-8")
         self.assertIn(
-            "https://github.com/KanG-ciyuan/kang-github-readme",
-            text,
+            'manifest.get("installation", {}).get("status") != "verified"',
+            validator,
+            "the validator's single accepted value changed; revisit H-9",
         )
-        self.assertIn("Codex 安装已验证", text)
-        self.assertIn("npx 安装尚未验证", text)
+
+        # The contradiction is documented, not silently tolerated.
+        self.assertEqual(manifest["installation"]["status"], "verified")
+        self.assertEqual(sorted((ROOT / "reports").glob("*install*")), [])
+
+    def test_readme_states_the_unverified_npx_route(self) -> None:
+        """The npx route is documented but explicitly not verified.
+
+        This test previously also required the literal sentence
+        "Codex 安装已验证". That assertion is gone: the package ships no install
+        evidence, so it cannot be satisfied honestly. The evidence rule it was
+        trying to express now lives in
+        `test_verified_install_claim_requires_shipped_evidence`.
+        """
+        english = (ROOT / "README.md").read_text(encoding="utf-8")
+        chinese = (ROOT / "README.zh-CN.md").read_text(encoding="utf-8")
+
+        self.assertIn("https://github.com/KanG-ciyuan/kang-github-readme", english)
+        # Both pages must surface the npx route together with its status; the
+        # exact sentence is no longer asserted, because the honest label is
+        # carried by the evidence rule above.
+        for page, text in (("README.md", english), ("README.zh-CN.md", chinese)):
+            with self.subTest(page=page):
+                self.assertIn("npx", text)
+                self.assertIn("to verify", text)
 
     def test_only_one_discoverable_skill_entrypoint_exists(self) -> None:
         entries = sorted(ROOT.rglob("SKILL.md"))
@@ -86,9 +132,34 @@ class PackageContractTest(unittest.TestCase):
             with self.subTest(relative=relative):
                 self.assertTrue((ROOT / relative).is_file())
 
-    def test_readme_is_a_chinese_first_product_page(self) -> None:
-        text = (ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertRegex(text, r"[\u4e00-\u9fff]")
+    def test_readme_is_a_bilingual_cross_linked_pair(self) -> None:
+        """The package documents itself in two languages.
+
+        This test previously required the nine Chinese headings inside
+        `README.md` itself, which forced the canonical file to be Chinese-only.
+        It now asserts the invariant: both pages exist, they link to each other,
+        and each carries its own reader-facing sections in its own language.
+        """
+        english = (ROOT / "README.md").read_text(encoding="utf-8")
+        chinese = (ROOT / "README.zh-CN.md").read_text(encoding="utf-8")
+
+        self.assertIn("README.zh-CN.md", english)
+        self.assertIn("README.md", chinese)
+
+        for heading in (
+            "## Why This Exists",
+            "## How It Works",
+            "## Example",
+            "## Outputs And Artifacts",
+            "## Prerequisites",
+            "## Evidence And Validation",
+            "## FAQ",
+            "## Author",
+            "## License",
+        ):
+            with self.subTest(page="README.md", heading=heading):
+                self.assertIn(heading, english)
+
         for heading in (
             "## 为什么需要它",
             "## 工作方式",
@@ -98,12 +169,54 @@ class PackageContractTest(unittest.TestCase):
             "## 证据状态",
             "## 常见问题",
             "## 作者",
-            "## License",
+            "## 开源许可证",
         ):
-            with self.subTest(heading=heading):
-                self.assertIn(heading, text)
-        examples = re.findall(r'^- [“\"]', text, flags=re.MULTILINE)
-        self.assertGreaterEqual(len(examples), 4)
+            with self.subTest(page="README.zh-CN.md", heading=heading):
+                self.assertIn(heading, chinese)
+
+        # The four shipped invocation examples must be reader-facing in both.
+        for page, text in (("README.md", english), ("README.zh-CN.md", chinese)):
+            with self.subTest(page=page):
+                self.assertGreaterEqual(
+                    len(re.findall(r'^- [“"]', text, flags=re.MULTILINE)), 4
+                )
+
+    def test_verified_install_claim_requires_shipped_evidence(self) -> None:
+        """A `verified` claim must be backed by evidence in the package.
+
+        `manifest.json` declares `installation.status: verified`, but nothing
+        here — no transcript, log, or test — reproduces an installation. The
+        reader-facing pages must therefore carry the `to verify` label instead
+        of restating the manifest's claim.
+
+        This test previously required the literal sentence "Codex 安装已验证" in
+        `README.md`, which could only be satisfied by publishing a claim the
+        repository cannot evidence.
+        """
+        manifest = json.loads((ROOT / "manifest.json").read_text(encoding="utf-8"))
+        self.assertEqual(manifest["installation"]["status"], "verified")
+
+        install_evidence = sorted((ROOT / "reports").glob("*install*"))
+        self.assertEqual(
+            install_evidence,
+            [],
+            "install evidence appeared; re-evaluate the reader-facing claim",
+        )
+
+        english = (ROOT / "README.md").read_text(encoding="utf-8")
+        chinese = (ROOT / "README.zh-CN.md").read_text(encoding="utf-8")
+
+        for page, text in (("README.md", english), ("README.zh-CN.md", chinese)):
+            with self.subTest(page=page):
+                self.assertIn("to verify", text)
+
+        for unsupported in (
+            "Codex 安装已验证",
+            "installation is verified",
+            "install is verified",
+        ):
+            with self.subTest(unsupported=unsupported):
+                self.assertNotIn(unsupported, english + chinese)
 
     def test_evaluation_reports_use_honest_labels(self) -> None:
         trigger = json.loads(
